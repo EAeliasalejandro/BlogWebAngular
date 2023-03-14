@@ -1,0 +1,9 @@
+#entrada {
+  background-color: aqua;
+  border-radius: 10px;
+  cursor:pointer;
+}
+
+#entrada * {
+  padding: 10px;
+}
