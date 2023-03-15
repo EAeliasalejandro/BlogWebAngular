@@ -8,10 +8,10 @@ import { EntradaService } from 'src/app/shared/services/entrada.service';
 })
 export class ListadoComponent {
   //Atributos
-  public listadoEntradas:any;
+  public listadoEntradas:Entrada[];
 
   constructor(private entradaServices:EntradaService) {
-
+    this.listadoEntradas = [ ];
   }
   ngOnInit():void{
     //cuando carga el componente (vista), se ejecuta el metodo
