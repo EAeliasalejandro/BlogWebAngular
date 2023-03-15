@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {HttpClientModule} from '@angular/common/http'; //modulo para usar http
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { ListadoComponent } from './views/listado/listado.component';
@@ -13,8 +13,8 @@ import { AcercaDeNosotrosComponent } from './views/acerca-de-nosotros/acerca-de-
   declarations: [//carga los componentes
     AppComponent, MenuComponent, ListadoComponent, EntradaComponent, PaginaNoEncontradaComponent, AcercaDeNosotrosComponent
   ],
-  imports: [//carga los modulos extra
-    BrowserModule, AppRoutingModule
+  imports: [//carga los modulos extra, agregar el modulo de http
+    BrowserModule, AppRoutingModule, HttpClientModule
   ],
   providers: [],//carga los servicios extra de los componentes
   bootstrap: [AppComponent]//se enlaza el componente principal de la aplicacion

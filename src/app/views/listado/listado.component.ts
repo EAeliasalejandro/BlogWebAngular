@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Entrada } from 'src/app/shared/interfaces/entrada';
+import { EntradaService } from 'src/app/shared/services/entrada.service';
 @Component({
   selector: 'app-listado',
   templateUrl: './listado.component.html',
@@ -7,24 +8,29 @@ import { Entrada } from 'src/app/shared/interfaces/entrada';
 })
 export class ListadoComponent {
   //Atributos
-  public listadoEntradas:Entrada[];
+  public listadoEntradas:any;
 
-  constructor() {
-    this.listadoEntradas = [
-      {
-        titulo: 'Introducción a Angular',
-        resumen: 'En esta lección realizaremos una pequeña introducción al mundo de desarrollo con Angular'
-      },
-      {
-        titulo: 'Typescript como lenguaje para Angular',
-        resumen: 'Breve recorrido por el lenguaje de Typescript como base para desarrollar en Angular'
-      },
-      {
-        titulo: 'Componentes en Angular',
-        resumen: 'Aprenderemos a usar los componentes en Angular y el porqué de su importancia'
-      }
-    ];
+  constructor(private entradaServices:EntradaService) {
+
   }
+  ngOnInit():void{
+    //cuando carga el componente (vista), se ejecuta el metodo
+    //que me lleva a la petición
+    this.recuperarEntradas();
+  }
+  //aqui defino que haré con las peticiones rest
+  private recuperarEntradas():void{
+    //el componente se subscribe a la petición
+    this.entradaServices.recuperarEntradas().subscribe({
+      //para respuesta correcta
+      next: (data) => this.listadoEntradas = data,
+      //para error
+      error: (e) => console.error(e),
+      //para cuando termina
+      complete: () => console.info('completado')
+    });
+  }
+
   public mostrarTitulo(titulo: string): void {
     alert(`Entrada seleccionada: ${ titulo }.`);
   }
