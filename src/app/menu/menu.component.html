@@ -3,4 +3,6 @@
   <!--El routerLink va a mostrar el componenete al que se ligó-->
   <li routerLink="/listado"><span>Listado</span></li>
   <li routerLink="/nosotros"><span>Acerca de</span></li>
+  <li id="acceso" *ngIf="miToken == 0" class="acceso" routerLink="/login"><span>Acceso</span></li>
+  <li id="acceso" *ngIf="miToken != 0" class="acceso" (click)="logout()"><span><strong>Usuario:</strong> {{ nombreUsuario }}</span></li>
 </ul>

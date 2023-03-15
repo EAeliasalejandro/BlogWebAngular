@@ -25,9 +25,7 @@ export class ListadoComponent {
       //para respuesta correcta
       next: (data) => this.listadoEntradas = data,
       //para error
-      error: (e) => console.error(e),
-      //para cuando termina
-      complete: () => console.info('completado')
+      error: (e) => console.error(e)
     });
   }
 
